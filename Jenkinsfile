@@ -11,18 +11,18 @@ pipeline {
             }
         }
 
-        stage('build') {
-            steps {
-                sh 'yarn build'
-            }
-        }
-
         stage('unit_test') {
             steps {
                 sh 'yarn test'
                 // sh 'yarn test:e2e'
             }
 
+        }
+
+        stage('build') {
+            steps {
+                sh 'yarn build'
+            }
         }
 
         stage('e2e_test') {
