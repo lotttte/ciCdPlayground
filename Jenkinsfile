@@ -21,6 +21,10 @@ pipeline {
 
         stage('build') {
             steps {
+                script {
+                    currentBuild.displayName = "Build Name Hier"
+                    currentBuild.description = "und eine tolle Beschreibung"
+                }
                 sh 'yarn build'
             }
         }
