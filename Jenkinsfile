@@ -59,7 +59,7 @@ pipeline {
         }
     }
     post {
-            alwas{
+            always{
                 junit '**/reports/**/*.xml'
             }
         }
