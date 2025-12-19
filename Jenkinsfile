@@ -18,7 +18,7 @@ pipeline {
             }
             post {
                 always {
-                    junit '/reports/jest-junit.xml'
+                    junit '**/reports/jest-junit.xml'
                 }
     }
 
@@ -40,7 +40,7 @@ pipeline {
             }
             post {
                 always {
-                    junit '/reports/cypress-junit.xml'
+                    junit '**/reports/cypress-junit.xml'
                 }
     }
 
