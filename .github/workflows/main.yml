@@ -31,4 +31,8 @@ jobs:
     - name: Integration tests
       run: yarn test:e2e
     - name: Report
-      run: juint '**/reports/**/*.xml'
+      if: always()
+      uses: EnricoMi/publish-uni-test-result-action@v2
+      with: 
+        files: |
+          **/reports/**/*.xml
