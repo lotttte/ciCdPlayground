@@ -14,7 +14,7 @@ pipeline {
         stage('unit_test') {
             steps {
                 sh 'yarn test'
-                // sh 'yarn test:e2e'
+                // sh 'yarn test:e2e' **/reports/**/*.xml
             }
 
         }
@@ -30,6 +30,12 @@ pipeline {
                 sh 'yarn test:e2e'
             }
 
+        }
+
+        post {
+            alwas{
+                junit '**/reports/**/*.xml'
+            }
         }
 
         stage('deploy') {
