@@ -30,9 +30,9 @@ jobs:
       run: yarn build
     - name: Integration tests
       run: yarn test:e2e
-    - name: Report
-      if: always()
-      uses: EnricoMi/publish-uni-test-result-action@v2
-      with: 
+    - name: Publish JUnit Test Report
+      if: always()  # always publish even if tests fail
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      with:
         files: |
           **/reports/**/*.xml
