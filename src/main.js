@@ -13,6 +13,6 @@ new App({
     // Which CI/CD tools do you use in your project?
     tools: "I don't use it",
     // What do you want to learn in this workshop?
-    expectations: ["smth new"],
+    expectations: ["smth. new"],
   },
 });
