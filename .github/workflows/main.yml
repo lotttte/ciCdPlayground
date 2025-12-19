@@ -4,12 +4,17 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to tag the commit with (format vX.Y.Z)'
+        required: true
+        type: string
   
 permissions:
   checks: write
   pull-requests: write
   id-token: write
-  contents: read
+  contents: write
   pages: write
 
 jobs:
@@ -36,3 +41,12 @@ jobs:
       with:
         files: |
           **/reports/**/*.xml
+    - name: Tag commit
+      if: ${{ github.event_name == 'workflow_dispatch' }}
+      env:
+        VERSION: ${{ github.event.inputs.version }}
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git tag -a "$VERSION" -m "Release $VERSION"
+        git push origin "$VERSION"
