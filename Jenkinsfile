@@ -16,6 +16,11 @@ pipeline {
                 sh 'yarn test'
                 // sh 'yarn test:e2e' **/reports/**/*.xml
             }
+            post {
+                always {
+                    junit '/reports/jest-junit.xml'
+                }
+    }
 
         }
 
@@ -33,6 +38,11 @@ pipeline {
             steps {
                 sh 'yarn test:e2e'
             }
+            post {
+                always {
+                    junit '/reports/cypress-junit.xml'
+                }
+    }
 
         }
 
@@ -60,11 +70,6 @@ pipeline {
                     profileName: 'role-based-access', 
                     userMetadata: []
             }
-        }
-    }
-    post {
-        always {
-            junit '**/reports/**/*.xml'
         }
     }
 }
